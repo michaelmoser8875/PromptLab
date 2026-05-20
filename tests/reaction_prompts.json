@@ -1,0 +1,114 @@
+{
+  "prompts": [
+    {
+      "prompt": "what happens when methanol reacts with acetic acid?",
+      "expected_reactants": ["methanol", "acetic acid"],
+      "category": "esterification"
+    },
+    {
+      "prompt": "burn methane in oxygen",
+      "expected_reactants": ["methane", "oxygen"],
+      "category": "combustion"
+    },
+    {
+      "prompt": "mix sodium hydroxide with hydrochloric acid",
+      "expected_reactants": ["sodium hydroxide", "hydrochloric acid"],
+      "category": "acid-base"
+    },
+    {
+      "prompt": "react bromomethane with hydroxide",
+      "expected_reactants": ["bromomethane", "hydroxide"],
+      "category": "sn2"
+    },
+    {
+      "prompt": "what happens when silver nitrate meets sodium chloride in water?",
+      "expected_reactants": ["silver nitrate", "sodium chloride"],
+      "category": "precipitation"
+    },
+    {
+      "prompt": "drop sodium metal into water",
+      "expected_reactants": ["sodium", "water"],
+      "category": "single-replacement"
+    },
+    {
+      "prompt": "ethene reacts with hydrogen bromide",
+      "expected_reactants": ["ethene", "hydrogen bromide"],
+      "category": "addition"
+    },
+    {
+      "prompt": "ammonia gas meets hydrochloric acid fumes",
+      "expected_reactants": ["ammonia", "hydrochloric acid"],
+      "category": "acid-base"
+    },
+    {
+      "prompt": "magnesium burns in oxygen",
+      "expected_reactants": ["magnesium", "oxygen"],
+      "category": "combustion"
+    },
+    {
+      "prompt": "zinc reacts with copper sulfate solution",
+      "expected_reactants": ["zinc", "copper sulfate"],
+      "category": "displacement"
+    },
+    {
+      "prompt": "benzene with bromine and an iron catalyst",
+      "expected_reactants": ["benzene", "bromine"],
+      "category": "electrophilic-aromatic-substitution"
+    },
+    {
+      "prompt": "react methyl iodide with cyanide",
+      "expected_reactants": ["methyl iodide", "cyanide"],
+      "category": "sn2"
+    },
+    {
+      "prompt": "what happens when ethanol is heated with concentrated sulfuric acid?",
+      "expected_reactants": ["ethanol", "sulfuric acid"],
+      "category": "dehydration"
+    },
+    {
+      "prompt": "propan-1-ol combined with acetic acid",
+      "expected_reactants": ["propan-1-ol", "acetic acid"],
+      "category": "esterification"
+    },
+    {
+      "prompt": "calcium carbonate reacts with hydrochloric acid",
+      "expected_reactants": ["calcium carbonate", "hydrochloric acid"],
+      "category": "acid-base"
+    },
+    {
+      "prompt": "hydrogen peroxide decomposes",
+      "expected_reactants": ["hydrogen peroxide"],
+      "category": "decomposition"
+    },
+    {
+      "prompt": "react ethyl bromide with sodium hydroxide",
+      "expected_reactants": ["ethyl bromide", "sodium hydroxide"],
+      "category": "sn2"
+    },
+    {
+      "prompt": "ammonia dissolves in water",
+      "expected_reactants": ["ammonia", "water"],
+      "category": "acid-base"
+    },
+    {
+      "prompt": "chlorine gas reacts with sodium",
+      "expected_reactants": ["chlorine", "sodium"],
+      "category": "synthesis"
+    },
+    {
+      "prompt": "iron rusting in moist air",
+      "expected_reactants": ["iron", "oxygen", "water"],
+      "category": "oxidation"
+    },
+    {
+      "prompt": "carbon dioxide dissolves in water to form carbonic acid",
+      "expected_reactants": ["carbon dioxide", "water"],
+      "category": "hydration"
+    },
+    {
+      "prompt": "potassium dropped in water",
+      "expected_reactants": ["potassium", "water"],
+      "category": "single-replacement"
+    }
+  ]
+}
