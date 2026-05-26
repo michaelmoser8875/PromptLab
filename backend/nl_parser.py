@@ -154,7 +154,7 @@ _LLM_SMILES_SYSTEM = (
     "You return the canonical SMILES string for a named chemical compound. "
     "Reply with the SMILES only - no explanation, no surrounding quotes, no "
     "code fences, no prose. If you do not know the structure with confidence, "
-    "reply with exactly: UNKNOWN."
+    "reply with exactly: UNKNOWN"
 )
 
 
