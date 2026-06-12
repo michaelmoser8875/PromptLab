@@ -3,112 +3,194 @@
     {
       "prompt": "what happens when methanol reacts with acetic acid?",
       "expected_reactants": ["methanol", "acetic acid"],
-      "category": "esterification"
+      "category": "esterification",
+      "expected_classification": "esterification"
     },
     {
       "prompt": "burn methane in oxygen",
       "expected_reactants": ["methane", "oxygen"],
-      "category": "combustion"
+      "category": "combustion",
+      "expected_classification": "combustion"
     },
     {
       "prompt": "mix sodium hydroxide with hydrochloric acid",
       "expected_reactants": ["sodium hydroxide", "hydrochloric acid"],
-      "category": "acid-base"
+      "category": "acid-base",
+      "expected_classification": "acid-base"
     },
     {
       "prompt": "react bromomethane with hydroxide",
       "expected_reactants": ["bromomethane", "hydroxide"],
-      "category": "sn2"
+      "category": "sn2",
+      "expected_classification": "sn2"
     },
     {
       "prompt": "what happens when silver nitrate meets sodium chloride in water?",
       "expected_reactants": ["silver nitrate", "sodium chloride"],
-      "category": "precipitation"
+      "category": "precipitation",
+      "expected_classification": "precipitation"
     },
     {
       "prompt": "drop sodium metal into water",
       "expected_reactants": ["sodium", "water"],
-      "category": "single-replacement"
+      "category": "single-replacement",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "ethene reacts with hydrogen bromide",
       "expected_reactants": ["ethene", "hydrogen bromide"],
-      "category": "addition"
+      "category": "addition",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "ammonia gas meets hydrochloric acid fumes",
       "expected_reactants": ["ammonia", "hydrochloric acid"],
-      "category": "acid-base"
+      "category": "acid-base",
+      "expected_classification": "acid-base"
     },
     {
       "prompt": "magnesium burns in oxygen",
       "expected_reactants": ["magnesium", "oxygen"],
-      "category": "combustion"
+      "category": "combustion",
+      "expected_classification": "combustion"
     },
     {
       "prompt": "zinc reacts with copper sulfate solution",
       "expected_reactants": ["zinc", "copper sulfate"],
-      "category": "displacement"
+      "category": "displacement",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "benzene with bromine and an iron catalyst",
       "expected_reactants": ["benzene", "bromine"],
-      "category": "electrophilic-aromatic-substitution"
+      "category": "electrophilic-aromatic-substitution",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "react methyl iodide with cyanide",
       "expected_reactants": ["methyl iodide", "cyanide"],
-      "category": "sn2"
+      "category": "sn2",
+      "expected_classification": "sn2"
     },
     {
       "prompt": "what happens when ethanol is heated with concentrated sulfuric acid?",
       "expected_reactants": ["ethanol", "sulfuric acid"],
-      "category": "dehydration"
+      "category": "dehydration",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "propan-1-ol combined with acetic acid",
       "expected_reactants": ["propan-1-ol", "acetic acid"],
-      "category": "esterification"
+      "category": "esterification",
+      "expected_classification": "esterification"
     },
     {
       "prompt": "calcium carbonate reacts with hydrochloric acid",
       "expected_reactants": ["calcium carbonate", "hydrochloric acid"],
-      "category": "acid-base"
+      "category": "acid-base",
+      "expected_classification": "acid-base"
     },
     {
       "prompt": "hydrogen peroxide decomposes",
       "expected_reactants": ["hydrogen peroxide"],
-      "category": "decomposition"
+      "category": "decomposition",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "react ethyl bromide with sodium hydroxide",
       "expected_reactants": ["ethyl bromide", "sodium hydroxide"],
-      "category": "sn2"
+      "category": "sn2",
+      "expected_classification": "sn2"
     },
     {
       "prompt": "ammonia dissolves in water",
       "expected_reactants": ["ammonia", "water"],
-      "category": "acid-base"
+      "category": "acid-base",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "chlorine gas reacts with sodium",
       "expected_reactants": ["chlorine", "sodium"],
-      "category": "synthesis"
+      "category": "synthesis",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "iron rusting in moist air",
       "expected_reactants": ["iron", "oxygen", "water"],
-      "category": "oxidation"
+      "category": "oxidation",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "carbon dioxide dissolves in water to form carbonic acid",
       "expected_reactants": ["carbon dioxide", "water"],
-      "category": "hydration"
+      "category": "hydration",
+      "expected_classification": "unsupported"
     },
     {
       "prompt": "potassium dropped in water",
       "expected_reactants": ["potassium", "water"],
-      "category": "single-replacement"
+      "category": "single-replacement",
+      "expected_classification": "unsupported"
+    },
+    {
+      "prompt": "formic acid combined with ethanol",
+      "expected_reactants": ["formic acid", "ethanol"],
+      "category": "esterification",
+      "expected_classification": "esterification"
+    },
+    {
+      "prompt": "benzoic acid heated with methanol",
+      "expected_reactants": ["benzoic acid", "methanol"],
+      "category": "esterification",
+      "expected_classification": "esterification"
+    },
+    {
+      "prompt": "burn ethanol in air",
+      "expected_reactants": ["ethanol", "oxygen"],
+      "category": "combustion",
+      "expected_classification": "combustion"
+    },
+    {
+      "prompt": "propane combusts in oxygen",
+      "expected_reactants": ["propane", "oxygen"],
+      "category": "combustion",
+      "expected_classification": "combustion"
+    },
+    {
+      "prompt": "1-iodopropane reacts with sodium methoxide",
+      "expected_reactants": ["1-iodopropane", "sodium methoxide"],
+      "category": "sn2",
+      "expected_classification": "sn2"
+    },
+    {
+      "prompt": "react 1-chlorobutane with sodium iodide in acetone",
+      "expected_reactants": ["1-chlorobutane", "sodium iodide"],
+      "category": "sn2",
+      "expected_classification": "sn2"
+    },
+    {
+      "prompt": "sulfuric acid mixed with sodium hydroxide",
+      "expected_reactants": ["sulfuric acid", "sodium hydroxide"],
+      "category": "acid-base",
+      "expected_classification": "acid-base"
+    },
+    {
+      "prompt": "potassium hydroxide neutralized by nitric acid",
+      "expected_reactants": ["potassium hydroxide", "nitric acid"],
+      "category": "acid-base",
+      "expected_classification": "acid-base"
+    },
+    {
+      "prompt": "barium chloride mixed with sodium sulfate",
+      "expected_reactants": ["barium chloride", "sodium sulfate"],
+      "category": "precipitation",
+      "expected_classification": "precipitation"
+    },
+    {
+      "prompt": "lead nitrate added to potassium iodide",
+      "expected_reactants": ["lead nitrate", "potassium iodide"],
+      "category": "precipitation",
+      "expected_classification": "precipitation"
     }
   ]
 }
