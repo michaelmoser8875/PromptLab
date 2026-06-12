@@ -71,8 +71,10 @@ _PATTERNS: dict[str, str] = {
     "carbon_dioxide": "O=C=O",
     "water": "[OX2H2]",
     # Acid-base
-    "hydroxide": "[OX2H1-]",
-    "oxide_ion": "[OX1-2]",
+    # Note: no X<n> constraint here - in RDKit SMARTS, X counts non-implicit
+    # neighbors, which is 0 for free ions like [OH-] and [O-2].
+    "hydroxide": "[OH-]",
+    "oxide_ion": "[O-2]",
     "carbonate": "[CX3](=[OX1])([OX1-])[OX1-]",
     "bicarbonate": "[CX3](=[OX1])([OX2H1])[OX1-]",
     "ammonia_or_primary_amine": "[NX3;H2,H3;!$(N=*);!$(NC=O)]",
