@@ -3,6 +3,12 @@
 > Natural-language molecular reaction simulator — describe a reaction in plain
 > English and watch it animate.
 
+<p align="center">
+  <img src="resources/2d-recording.gif" alt="2D SN2 mechanism animation: hydroxide attacks bromomethane, the carbon inverts, and bromide leaves" width="720" />
+</p>
+
+<p align="center"><em>SN2: hydroxide attacks bromomethane from the backside — Walden inversion, bromide departs.</em></p>
+
 PromptLab takes a plain-English description of a chemical reaction, resolves the
 molecules, balances the equation, classifies the reaction type, and animates the
 mechanism. It is honest about its scope: **mechanism-templated animation, not
