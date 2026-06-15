@@ -1,7 +1,7 @@
 # PromptLab
 
-> Natural-language molecular reaction simulator — describe a reaction in plain
-> English and watch it animate.
+> Describe a chemical reaction in plain English — watch it come to life as an
+> animated mechanism.
 
 <p align="center">
   <img src="resources/2d-recording.gif" alt="2D SN2 mechanism animation: hydroxide attacks bromomethane, the carbon inverts, and bromide leaves" width="720" />
@@ -9,98 +9,118 @@
 
 <p align="center"><em>SN2: hydroxide attacks bromomethane from the backside — Walden inversion, bromide departs.</em></p>
 
-PromptLab takes a plain-English description of a chemical reaction, resolves the
-molecules, balances the equation, classifies the reaction type, and animates the
-mechanism. It is honest about its scope: **mechanism-templated animation, not
-first-principles molecular dynamics.**
+## Why PromptLab
 
-## Pipeline
+Reaction mechanisms are hard to picture from a static textbook arrow. PromptLab
+closes that gap: type something like *"what happens when methanol reacts with
+acetic acid?"* and it figures out the molecules, balances the equation,
+recognizes the reaction, and plays back the mechanism step by step — the
+electrons pushing, the bonds breaking and forming, the geometry inverting.
 
-| Phase | Module | What it does |
-|------|--------|--------------|
-| 1 | [`backend/nl_parser.py`](backend/nl_parser.py) | Natural language → named compounds → canonical SMILES (PubChem, LLM fallback, RDKit-validated) |
-| 2 | [`backend/equation_builder.py`](backend/equation_builder.py) | Reactants → predicted products → **atom-balanced** equation (exact rational nullspace) |
-| 3 | [`backend/reaction_classifier.py`](backend/reaction_classifier.py) | Equation → reaction type (LLM proposes, RDKit SMARTS verifies) |
-| 4 | [`backend/animation.py`](backend/animation.py) + [`backend/templates/`](backend/templates/) + [`frontend/`](frontend/) | Equation + type → **2D mechanism animation** |
+It's built for anyone who learns by seeing:
 
-Supported reaction types: **SN2, acid-base, esterification, combustion,
-precipitation.** Anything else classifies as `unsupported` and is not animated.
+- **Students** revising for organic or general chemistry exams.
+- **Teachers** who want a quick, correct visual to drop into a lesson.
+- **The curious** who just want to know what actually happens when you mix two
+  things together.
 
-## Setup
+You don't draw structures or memorize SMILES — you describe the reaction the way
+you'd say it out loud.
+
+## What it does
+
+Give it a sentence and PromptLab will:
+
+1. **Understand the chemistry** — pull out the compounds you named and look up
+   their exact molecular structures.
+2. **Balance the equation** — predict the products and work out the
+   coefficients, guaranteed atom-by-atom correct (no hand-waving).
+3. **Recognize the reaction** — identify the mechanism, and say so honestly when
+   it's one we don't cover yet.
+4. **Animate it** — play the mechanism as a smooth 2D animation you can scrub,
+   pause, and replay.
+
+Reactions it animates today: **SN2 substitution, acid-base neutralization,
+esterification, combustion, and precipitation.**
+
+## See it in action
+
+The animations are generated entirely from the real molecules — no per-example
+hand-drawing. Swap one reactant for another (bromomethane → 1-chlorobutane,
+hydroxide → cyanide) and the animation re-draws itself to match.
 
 ```bash
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=...   # needed for phases 1–3 (parsing/classification)
-```
 
-Phase 4 geometry is fully deterministic (RDKit only) and needs **no API key**.
-
-## Phase 4 — 2D mechanism animations
-
-The animation builder turns a balanced equation + reaction-type label into an
-**AnimationSpec**: a JSON document of keyframes (`approach → transition state →
-products`) that the frontend interpolates. Geometry comes from RDKit's 2D
-coordinates of the *actual* molecules, so the templates are **swappable** —
-change the reactants and the animation re-choreographs itself with no code
-change (e.g. bromomethane → 1-chlorobutane, hydroxide → cyanide).
-
-Each frame is a full scene snapshot: atoms (id, element, position, charge,
-role) and bonds (order, state: `normal`/`forming`/`breaking`). The renderer
-transitions between consecutive frames — an atom id present in both is
-interpolated, an id in only one fades. That single rule drives both the
-atom-tracked **SN2** inversion (backside attack → planar TS → Walden inversion)
-and the cross-fade mechanisms for the other types.
-
-### Generate specs and view the animations
-
-```bash
-# 1. Build example specs (offline, no API key) into frontend/specs/
+# Build the example animations (works offline, no setup beyond the install)
 python -m backend.gen_examples
 
-# 2. Serve the frontend and open the printed URL
+# Launch the viewer
 cd frontend && python -m http.server 8000
-#    → http://localhost:8000/
+#   → open http://localhost:8000/
+```
 
-# Or build a spec straight from a prompt (uses the API for phases 1–3):
+The viewer gives you a reaction picker, play / pause / scrub, and a speed
+control. Everything is color-coded so the mechanism reads at a glance:
+
+| Color | Meaning |
+|-------|---------|
+| 🔵 cyan | nucleophile / base |
+| 🟠 orange | electrophile |
+| 🔴 red ring | leaving group |
+| 🟡 yellow | acidic proton |
+| green dashes | bond forming |
+| red dashes | bond breaking |
+
+Want to animate your own reaction from a prompt?
+
+```bash
+export ANTHROPIC_API_KEY=...   # used to understand and classify the prompt
 python -m backend.animation "react bromomethane with hydroxide" \
     --out=frontend/specs/custom.json
 ```
 
-The viewer has a reaction picker, play/pause/scrub, and speed control.
-Deep-link to a frozen frame with `?spec=<file>&t=<0..1>` or auto-play with
+Then refresh the viewer and pick it from the list. You can also deep-link
+straight to a frozen moment with `?spec=<file>&t=<0..1>`, or auto-play with
 `?play`.
 
-Roles are color-coded: nucleophile/base (cyan), electrophile (orange), leaving
-group (red), acidic proton (yellow); bonds forming (green dashed) and breaking
-(red dashed).
+## Honest about scope
 
-### Tests
+PromptLab shows you the *canonical* mechanism for a recognized reaction type,
+animated from the actual molecules. It is a teaching and visualization tool —
+**mechanism-templated animation, not a quantum-chemistry or molecular-dynamics
+engine.** It won't predict the outcome of a reaction nobody has a template for;
+when it doesn't recognize something, it tells you rather than guessing.
+
+## Under the hood
+
+- **Structure lookup** via [PubChem](https://pubchem.ncbi.nlm.nih.gov/), with an
+  LLM fallback, every result validated by [RDKit](https://www.rdkit.org/).
+- **Exact balancing** by solving the element-balance matrix in rational
+  arithmetic — the equation is correct or it errors, never silently wrong.
+- **Two-pass classification**: an LLM proposes the reaction type, then a
+  rule-based RDKit/SMARTS check verifies the structure actually matches before
+  it's accepted.
+- **Animations** are generated as keyframe specs from RDKit 2D coordinates and
+  rendered as SVG in the browser. The molecule geometry is deterministic — no
+  API key needed to build or watch the animations.
+
+```
+backend/        understanding, balancing, classification, and animation specs
+  templates/    the mechanism choreographers (SN2 + a generic engine)
+frontend/       the in-browser animation viewer
+  specs/        generated animations
+tests/          curated reaction prompts and checks
+```
+
+Run the offline animation checks any time:
 
 ```bash
-python tests/test_phase4.py     # offline: spec validity + SN2 mechanism + swap-invariance
-python tests/test_phase3.py     # live (needs ANTHROPIC_API_KEY): classification accuracy
+python tests/test_phase4.py
 ```
 
-## Repo layout
+## What's next
 
-```
-backend/
-  nl_parser.py          # Phase 1
-  equation_builder.py   # Phase 2
-  reaction_classifier.py# Phase 3
-  animation.py          # Phase 4 spec model + RDKit 2D layout + dispatch
-  templates/            # Phase 4 mechanism choreographers (sn2 + generic engine)
-  gen_examples.py       # emit example specs offline
-frontend/
-  index.html            # 2D animation viewer
-  src/animations/2d/player.js
-  specs/                # generated AnimationSpec JSON
-tests/
-  reaction_prompts.json # curated prompt set
-  test_phase{1,2,3,4}.py
-```
-
-## Roadmap
-
-Phase 5 reuses the Phase 4 template metadata (which atoms move, which bonds
-change) to drive 3D ball-and-stick animations.
+3D ball-and-stick animations of the same mechanisms — rotate, pause, and watch
+the geometry change in space — reusing the choreography that already drives the
+2D view.
