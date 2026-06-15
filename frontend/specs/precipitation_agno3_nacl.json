@@ -1,0 +1,260 @@
+{
+  "reaction_type": "precipitation",
+  "equation_smiles": "[Ag+].[O-][N+](=O)[O-] + [Na+].[Cl-] -> [Ag+].[Cl-] + [Na+].[O-][N+](=O)[O-]",
+  "equation_names": "silver nitrate + sodium chloride -> silver chloride + sodium nitrate",
+  "duration_ms": 9000,
+  "frames": [
+    {
+      "id": "reactants",
+      "t": 0.0,
+      "caption": "Two soluble salts are dissolved together.",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "Ag",
+          "x": -76.00000000000003,
+          "y": -68.25,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "O",
+          "x": -21.440399561580392,
+          "y": -26.249999999999975,
+          "charge": -1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_2",
+          "el": "N",
+          "x": -76.00000000000003,
+          "y": 5.250000000000016,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_3",
+          "el": "O",
+          "x": -130.55960043841964,
+          "y": -26.250000000000014,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_4",
+          "el": "O",
+          "x": -76.00000000000004,
+          "y": 68.25,
+          "charge": -1,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "Na",
+          "x": 88.55960043841961,
+          "y": -9.449999999999996,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "Cl",
+          "x": 130.55960043841964,
+          "y": -9.449999999999996,
+          "charge": -1,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_1",
+          "b": "r0_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_2",
+          "b": "r0_3",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_2",
+          "b": "r0_4",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "encounter",
+      "t": 0.45,
+      "caption": "The dissolved ions swap partners.",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "Ag",
+          "x": -38.00000000000001,
+          "y": -68.25,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "O",
+          "x": 16.559600438419622,
+          "y": -26.249999999999975,
+          "charge": -1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_2",
+          "el": "N",
+          "x": -38.00000000000001,
+          "y": 5.250000000000016,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_3",
+          "el": "O",
+          "x": -92.55960043841962,
+          "y": -26.250000000000014,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_4",
+          "el": "O",
+          "x": -38.00000000000003,
+          "y": 68.25,
+          "charge": -1,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "Na",
+          "x": 50.55960043841962,
+          "y": -9.449999999999996,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "Cl",
+          "x": 92.55960043841962,
+          "y": -9.449999999999996,
+          "charge": -1,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_1",
+          "b": "r0_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_2",
+          "b": "r0_3",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_2",
+          "b": "r0_4",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "products",
+      "t": 1.0,
+      "caption": "An insoluble salt precipitates out of solution.",
+      "atoms": [
+        {
+          "id": "p0_0",
+          "el": "Ag",
+          "x": -68.55960043841962,
+          "y": -9.449999999999996,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "p0_1",
+          "el": "Cl",
+          "x": -110.55960043841962,
+          "y": -9.449999999999996,
+          "charge": -1,
+          "role": "normal"
+        },
+        {
+          "id": "p1_0",
+          "el": "Na",
+          "x": 55.999999999999986,
+          "y": -68.25,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "p1_1",
+          "el": "O",
+          "x": 110.55960043841962,
+          "y": -26.249999999999975,
+          "charge": -1,
+          "role": "normal"
+        },
+        {
+          "id": "p1_2",
+          "el": "N",
+          "x": 55.999999999999986,
+          "y": 5.250000000000016,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "p1_3",
+          "el": "O",
+          "x": 1.440399561580378,
+          "y": -26.250000000000014,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_4",
+          "el": "O",
+          "x": 55.99999999999996,
+          "y": 68.25,
+          "charge": -1,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "p1_1",
+          "b": "p1_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p1_2",
+          "b": "p1_3",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "p1_2",
+          "b": "p1_4",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    }
+  ]
+}

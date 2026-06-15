@@ -1,0 +1,34 @@
+{
+  "specs": [
+    {
+      "file": "sn2_bromomethane_hydroxide.json",
+      "label": "bromomethane + hydroxide -> methanol + bromide",
+      "type": "sn2"
+    },
+    {
+      "file": "sn2_chlorobutane_cyanide.json",
+      "label": "1-chlorobutane + cyanide -> pentanenitrile + chloride",
+      "type": "sn2"
+    },
+    {
+      "file": "acid_base_naoh_hcl.json",
+      "label": "sodium hydroxide + hydrochloric acid -> sodium chloride + water",
+      "type": "acid-base"
+    },
+    {
+      "file": "esterification_acetic_methanol.json",
+      "label": "acetic acid + methanol -> methyl acetate + water",
+      "type": "esterification"
+    },
+    {
+      "file": "combustion_methane.json",
+      "label": "methane + 2 oxygen -> carbon dioxide + 2 water",
+      "type": "combustion"
+    },
+    {
+      "file": "precipitation_agno3_nacl.json",
+      "label": "silver nitrate + sodium chloride -> silver chloride + sodium nitrate",
+      "type": "precipitation"
+    }
+  ]
+}

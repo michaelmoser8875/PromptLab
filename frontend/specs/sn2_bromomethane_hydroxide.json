@@ -1,0 +1,421 @@
+{
+  "reaction_type": "sn2",
+  "equation_smiles": "CBr + [OH-] -> CO + [Br-]",
+  "equation_names": "bromomethane + hydroxide -> methanol + bromide",
+  "duration_ms": 10000,
+  "frames": [
+    {
+      "id": "reactants",
+      "t": 0.0,
+      "caption": "hydroxide approaches the carbon from the side opposite the Br leaving group.",
+      "atoms": [
+        {
+          "id": "e0",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e1",
+          "el": "Br",
+          "x": 63.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e2",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e3",
+          "el": "H",
+          "x": -63.0,
+          "y": 7.105427357601002e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e4",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": -20.856995326752354,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "O",
+          "x": -142.79999999999998,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "H",
+          "x": -205.79999999999998,
+          "y": 4.6629367034256575e-15,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "approach",
+      "t": 0.4,
+      "caption": "Backside attack: the nucleophile's lone pair lines up with the C\u2013Br bond.",
+      "atoms": [
+        {
+          "id": "e0",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e1",
+          "el": "Br",
+          "x": 63.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e2",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e3",
+          "el": "H",
+          "x": -63.0,
+          "y": 7.105427357601002e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e4",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": -20.856995326752354,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "O",
+          "x": -79.8,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "H",
+          "x": -142.8,
+          "y": 4.6629367034256575e-15,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "e0",
+          "order": 1.0,
+          "state": "forming"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "transition",
+      "t": 0.68,
+      "caption": "Transition state: the C\u2013Nu bond half-forms as the C\u2013Br bond half-breaks; the carbon goes planar.",
+      "atoms": [
+        {
+          "id": "e0",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e1",
+          "el": "Br",
+          "x": 71.39999999999999,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e2",
+          "el": "H",
+          "x": 48.260799916495614,
+          "y": 40.495619410251976,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e3",
+          "el": "H",
+          "x": 3.857637417314163e-15,
+          "y": 63.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e4",
+          "el": "H",
+          "x": -48.26079991649561,
+          "y": 40.49561941025199,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "O",
+          "x": -55.85999999999999,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "H",
+          "x": -118.85999999999999,
+          "y": 4.6629367034256575e-15,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "breaking"
+        },
+        {
+          "a": "e0",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "e0",
+          "order": 1.0,
+          "state": "forming"
+        }
+      ],
+      "arrows": [
+        {
+          "src": "n0",
+          "dst": "e0",
+          "kind": "electron_pair"
+        },
+        {
+          "src": "e0",
+          "dst": "e1",
+          "kind": "electron_pair"
+        }
+      ]
+    },
+    {
+      "id": "products",
+      "t": 1.0,
+      "caption": "Inversion complete: the Br departs as an ion and the substituents have flipped through the carbon (Walden inversion).",
+      "atoms": [
+        {
+          "id": "e0",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e1",
+          "el": "Br",
+          "x": 142.79999999999998,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e2",
+          "el": "H",
+          "x": 59.44733590279577,
+          "y": 20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e3",
+          "el": "H",
+          "x": 63.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e4",
+          "el": "H",
+          "x": 59.447335902795764,
+          "y": -20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "O",
+          "x": -63.0,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "H",
+          "x": -126.0,
+          "y": 4.6629367034256575e-15,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "breaking"
+        },
+        {
+          "a": "e0",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "e0",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    }
+  ]
+}

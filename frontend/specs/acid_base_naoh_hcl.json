@@ -1,0 +1,194 @@
+{
+  "reaction_type": "acid-base",
+  "equation_smiles": "[Na+].[OH-] + Cl -> [Na+].[Cl-] + O",
+  "equation_names": "sodium hydroxide + hydrochloric acid -> sodium chloride + water",
+  "duration_ms": 9000,
+  "frames": [
+    {
+      "id": "reactants",
+      "t": 0.0,
+      "caption": "An acid and a base meet in solution.",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "Na",
+          "x": -86.5,
+          "y": -21.0,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "O",
+          "x": -118.0,
+          "y": 20.999999999999996,
+          "charge": -1,
+          "role": "base_site"
+        },
+        {
+          "id": "r0_2",
+          "el": "H",
+          "x": -55.0,
+          "y": 21.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "Cl",
+          "x": 55.0,
+          "y": 6.9999999999999964,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "H",
+          "x": 118.0,
+          "y": 7.000000000000002,
+          "charge": 0,
+          "role": "acid_proton"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_1",
+          "b": "r0_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_1",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "encounter",
+      "t": 0.45,
+      "caption": "A proton transfers from the acid to the base.",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "Na",
+          "x": -48.5,
+          "y": -21.0,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "O",
+          "x": -80.0,
+          "y": 20.999999999999996,
+          "charge": -1,
+          "role": "base_site"
+        },
+        {
+          "id": "r0_2",
+          "el": "H",
+          "x": -17.0,
+          "y": 21.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "Cl",
+          "x": 17.0,
+          "y": 6.9999999999999964,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "H",
+          "x": 80.0,
+          "y": 7.000000000000002,
+          "charge": 0,
+          "role": "acid_proton"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_1",
+          "b": "r0_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_1",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "products",
+      "t": 1.0,
+      "caption": "The products: a salt and/or water.",
+      "atoms": [
+        {
+          "id": "p0_0",
+          "el": "Na",
+          "x": -110.55960043841964,
+          "y": -5.249999999999993,
+          "charge": 1,
+          "role": "normal"
+        },
+        {
+          "id": "p0_1",
+          "el": "Cl",
+          "x": -68.55960043841964,
+          "y": -5.249999999999993,
+          "charge": -1,
+          "role": "normal"
+        },
+        {
+          "id": "p1_0",
+          "el": "O",
+          "x": 56.0,
+          "y": 15.750000000000014,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_1",
+          "el": "H",
+          "x": 110.55960043841964,
+          "y": -15.749999999999977,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_2",
+          "el": "H",
+          "x": 1.4403995615803638,
+          "y": -15.750000000000014,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "p1_0",
+          "b": "p1_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p1_0",
+          "b": "p1_2",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    }
+  ]
+}

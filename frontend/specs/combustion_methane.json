@@ -1,0 +1,282 @@
+{
+  "reaction_type": "combustion",
+  "equation_smiles": "C + 2 O=O -> O=C=O + 2 O",
+  "equation_names": "methane + 2 oxygen -> carbon dioxide + 2 water",
+  "duration_ms": 9000,
+  "frames": [
+    {
+      "id": "reactants",
+      "t": 0.0,
+      "caption": "Fuel and oxygen are brought together.",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "C",
+          "x": -86.5,
+          "y": 1.865174681370263e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "H",
+          "x": -23.5,
+          "y": 1.865174681370263e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_2",
+          "el": "H",
+          "x": -149.5,
+          "y": -5.850100153258062e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_3",
+          "el": "H",
+          "x": -86.5,
+          "y": -63.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_4",
+          "el": "H",
+          "x": -86.5,
+          "y": 63.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "O",
+          "x": 86.5,
+          "y": -2.3314683517128287e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "O",
+          "x": 149.5,
+          "y": 2.3314683517128287e-15,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_0",
+          "b": "r0_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_1",
+          "order": 2.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "encounter",
+      "t": 0.45,
+      "caption": "Bonds break and oxygen inserts as the fuel is oxidized.",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "C",
+          "x": -48.5,
+          "y": 1.865174681370263e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "H",
+          "x": 14.5,
+          "y": 1.865174681370263e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_2",
+          "el": "H",
+          "x": -111.5,
+          "y": -5.850100153258062e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_3",
+          "el": "H",
+          "x": -48.49999999999999,
+          "y": -63.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_4",
+          "el": "H",
+          "x": -48.50000000000001,
+          "y": 63.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "O",
+          "x": 48.5,
+          "y": -2.3314683517128287e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "O",
+          "x": 111.5,
+          "y": 2.3314683517128287e-15,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_0",
+          "b": "r0_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_1",
+          "order": 2.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "products",
+      "t": 1.0,
+      "caption": "Carbon dioxide and water are released, along with heat.",
+      "atoms": [
+        {
+          "id": "p0_0",
+          "el": "O",
+          "x": -26.559600438419636,
+          "y": -5.249999999999994,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_1",
+          "el": "C",
+          "x": -89.55960043841964,
+          "y": -5.24999999999999,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_2",
+          "el": "O",
+          "x": -152.55960043841964,
+          "y": -5.249999999999994,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_0",
+          "el": "O",
+          "x": 98.0,
+          "y": 15.750000000000014,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_1",
+          "el": "H",
+          "x": 152.55960043841964,
+          "y": -15.749999999999977,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_2",
+          "el": "H",
+          "x": 43.440399561580364,
+          "y": -15.750000000000014,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "p0_0",
+          "b": "p0_1",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_1",
+          "b": "p0_2",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "p1_0",
+          "b": "p1_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p1_0",
+          "b": "p1_2",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    }
+  ]
+}

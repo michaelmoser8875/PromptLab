@@ -1,0 +1,590 @@
+{
+  "reaction_type": "esterification",
+  "equation_smiles": "CC(=O)O + CO -> CC(=O)OC + O",
+  "equation_names": "acetic acid + methanol -> methyl acetate + water",
+  "duration_ms": 9000,
+  "frames": [
+    {
+      "id": "reactants",
+      "t": 0.0,
+      "caption": "A carboxylic acid and an alcohol come together (acid-catalyzed).",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "C",
+          "x": -83.77423776525458,
+          "y": 9.421052854045776,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "C",
+          "x": -144.161478850914,
+          "y": -8.533921778697241,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "r0_2",
+          "el": "O",
+          "x": -158.80563523748307,
+          "y": -69.80829393970522,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_3",
+          "el": "O",
+          "x": -189.90456355000435,
+          "y": 34.785475749567695,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "r0_4",
+          "el": "H",
+          "x": -23.386996679595114,
+          "y": 27.376027486788786,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_5",
+          "el": "H",
+          "x": -101.7292123979976,
+          "y": 69.80829393970522,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_6",
+          "el": "H",
+          "x": -65.81926313251157,
+          "y": -50.96618823161368,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_7",
+          "el": "H",
+          "x": -250.2918046356638,
+          "y": 16.83050111682465,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "C",
+          "x": 195.73220419724416,
+          "y": 3.6141183996144983,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "O",
+          "x": 141.17260375882452,
+          "y": 35.11411839961449,
+          "charge": 0,
+          "role": "nucleophile"
+        },
+        {
+          "id": "r1_2",
+          "el": "H",
+          "x": 250.2918046356638,
+          "y": -27.88588160038549,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_3",
+          "el": "H",
+          "x": 227.23220419724416,
+          "y": 58.17371883803413,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_4",
+          "el": "H",
+          "x": 164.23220419724416,
+          "y": -50.94548203880514,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_5",
+          "el": "H",
+          "x": 86.61300332040489,
+          "y": 3.6141183996144948,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_0",
+          "b": "r0_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_1",
+          "b": "r0_2",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_1",
+          "b": "r0_3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_5",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_6",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_3",
+          "b": "r0_7",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_1",
+          "b": "r1_5",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "encounter",
+      "t": 0.45,
+      "caption": "The alcohol oxygen attacks the carbonyl; the acid's \u2013OH leaves as water.",
+      "atoms": [
+        {
+          "id": "r0_0",
+          "el": "C",
+          "x": -45.77423776525458,
+          "y": 9.421052854045776,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_1",
+          "el": "C",
+          "x": -106.161478850914,
+          "y": -8.533921778697241,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "r0_2",
+          "el": "O",
+          "x": -120.80563523748307,
+          "y": -69.80829393970522,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_3",
+          "el": "O",
+          "x": -151.90456355000435,
+          "y": 34.785475749567695,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "r0_4",
+          "el": "H",
+          "x": 14.613003320404886,
+          "y": 27.376027486788786,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_5",
+          "el": "H",
+          "x": -63.7292123979976,
+          "y": 69.80829393970522,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_6",
+          "el": "H",
+          "x": -27.819263132511566,
+          "y": -50.96618823161368,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r0_7",
+          "el": "H",
+          "x": -212.2918046356638,
+          "y": 16.83050111682465,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_0",
+          "el": "C",
+          "x": 157.73220419724416,
+          "y": 3.6141183996144983,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_1",
+          "el": "O",
+          "x": 103.17260375882452,
+          "y": 35.11411839961449,
+          "charge": 0,
+          "role": "nucleophile"
+        },
+        {
+          "id": "r1_2",
+          "el": "H",
+          "x": 212.2918046356638,
+          "y": -27.88588160038549,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_3",
+          "el": "H",
+          "x": 189.23220419724416,
+          "y": 58.17371883803413,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_4",
+          "el": "H",
+          "x": 126.23220419724416,
+          "y": -50.94548203880514,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "r1_5",
+          "el": "H",
+          "x": 48.613003320404886,
+          "y": 3.6141183996144948,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "r0_0",
+          "b": "r0_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_1",
+          "b": "r0_2",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_1",
+          "b": "r0_3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_5",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_0",
+          "b": "r0_6",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r0_3",
+          "b": "r0_7",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_0",
+          "b": "r1_4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "r1_1",
+          "b": "r1_5",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "products",
+      "t": 1.0,
+      "caption": "An ester forms, releasing a molecule of water.",
+      "atoms": [
+        {
+          "id": "p0_0",
+          "el": "C",
+          "x": -6.226692691118956,
+          "y": 12.125308168226212,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_1",
+          "el": "C",
+          "x": -65.45989721505714,
+          "y": -9.332265828507655,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "p0_2",
+          "el": "O",
+          "x": -76.4936952922703,
+          "y": -71.3585126921644,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_3",
+          "el": "O",
+          "x": -113.65930366178216,
+          "y": 31.236407038415205,
+          "charge": 0,
+          "role": "nucleophile"
+        },
+        {
+          "id": "p0_4",
+          "el": "C",
+          "x": -172.89250818572032,
+          "y": 9.778833041681313,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_5",
+          "el": "H",
+          "x": 53.00651183281923,
+          "y": 33.58288216496007,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_6",
+          "el": "H",
+          "x": -27.68426668785284,
+          "y": 71.3585126921644,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_7",
+          "el": "H",
+          "x": 15.2308813056149,
+          "y": -47.107896355711986,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_8",
+          "el": "H",
+          "x": -232.1257127096585,
+          "y": -11.678740955052596,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_9",
+          "el": "H",
+          "x": -194.35008218245423,
+          "y": 69.0120375656195,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p0_10",
+          "el": "H",
+          "x": -151.4349341889864,
+          "y": -49.45437148225687,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_0",
+          "el": "O",
+          "x": 177.56611227123886,
+          "y": 24.46929030521575,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "p1_1",
+          "el": "H",
+          "x": 232.1257127096585,
+          "y": -7.030709694784241,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "p1_2",
+          "el": "H",
+          "x": 123.00651183281923,
+          "y": -7.030709694784278,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "p0_0",
+          "b": "p0_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_1",
+          "b": "p0_2",
+          "order": 2.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_1",
+          "b": "p0_3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_3",
+          "b": "p0_4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_0",
+          "b": "p0_5",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_0",
+          "b": "p0_6",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_0",
+          "b": "p0_7",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_4",
+          "b": "p0_8",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_4",
+          "b": "p0_9",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p0_4",
+          "b": "p0_10",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p1_0",
+          "b": "p1_1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "p1_0",
+          "b": "p1_2",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    }
+  ]
+}

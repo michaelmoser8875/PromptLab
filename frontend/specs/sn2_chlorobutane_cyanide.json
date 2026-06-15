@@ -1,0 +1,925 @@
+{
+  "reaction_type": "sn2",
+  "equation_smiles": "CCCCCl + [C-]#N -> CCCCC#N + [Cl-]",
+  "equation_names": "1-chlorobutane + cyanide -> pentanenitrile + chloride",
+  "duration_ms": 10000,
+  "frames": [
+    {
+      "id": "reactants",
+      "t": 0.0,
+      "caption": "cyanide approaches the carbon from the side opposite the Cl leaving group.",
+      "atoms": [
+        {
+          "id": "e3",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e4",
+          "el": "Cl",
+          "x": 63.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e0",
+          "el": "C",
+          "x": -185.44733590279577,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e1",
+          "el": "C",
+          "x": -122.44733590279577,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e2",
+          "el": "C",
+          "x": -59.447335902795764,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e5",
+          "el": "H",
+          "x": -248.44733590279577,
+          "y": 20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e6",
+          "el": "H",
+          "x": -185.44733590279577,
+          "y": -42.143004673247624,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e7",
+          "el": "H",
+          "x": -185.44733590279577,
+          "y": 83.85699532675238,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e8",
+          "el": "H",
+          "x": -122.44733590279577,
+          "y": 83.85699532675238,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e9",
+          "el": "H",
+          "x": -122.44733590279574,
+          "y": -42.143004673247624,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e10",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": -42.143004673247624,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e11",
+          "el": "H",
+          "x": -59.44733590279575,
+          "y": 83.85699532675238,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e12",
+          "el": "H",
+          "x": -63.0,
+          "y": 7.105427357601002e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e13",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": -20.85699532675236,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "C",
+          "x": -142.79999999999998,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "N",
+          "x": -205.79999999999998,
+          "y": 0.0,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e5",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e6",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e7",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e8",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e9",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e10",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e11",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e12",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e13",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 3.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "approach",
+      "t": 0.4,
+      "caption": "Backside attack: the nucleophile's lone pair lines up with the C\u2013Cl bond.",
+      "atoms": [
+        {
+          "id": "e3",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e4",
+          "el": "Cl",
+          "x": 63.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e0",
+          "el": "C",
+          "x": -185.44733590279577,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e1",
+          "el": "C",
+          "x": -122.44733590279577,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e2",
+          "el": "C",
+          "x": -59.447335902795764,
+          "y": 20.856995326752376,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e5",
+          "el": "H",
+          "x": -248.44733590279577,
+          "y": 20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e6",
+          "el": "H",
+          "x": -185.44733590279577,
+          "y": -42.143004673247624,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e7",
+          "el": "H",
+          "x": -185.44733590279577,
+          "y": 83.85699532675238,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e8",
+          "el": "H",
+          "x": -122.44733590279577,
+          "y": 83.85699532675238,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e9",
+          "el": "H",
+          "x": -122.44733590279574,
+          "y": -42.143004673247624,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e10",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": -42.143004673247624,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e11",
+          "el": "H",
+          "x": -59.44733590279575,
+          "y": 83.85699532675238,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e12",
+          "el": "H",
+          "x": -63.0,
+          "y": 7.105427357601002e-15,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e13",
+          "el": "H",
+          "x": -59.447335902795764,
+          "y": -20.85699532675236,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "C",
+          "x": -79.8,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "N",
+          "x": -142.8,
+          "y": 0.0,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e4",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e5",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e6",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e7",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e8",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e9",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e10",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e11",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e12",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e13",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 3.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "e3",
+          "order": 1.0,
+          "state": "forming"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "id": "transition",
+      "t": 0.68,
+      "caption": "Transition state: the C\u2013Nu bond half-forms as the C\u2013Cl bond half-breaks; the carbon goes planar.",
+      "atoms": [
+        {
+          "id": "e3",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e4",
+          "el": "Cl",
+          "x": 71.39999999999999,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e0",
+          "el": "C",
+          "x": -77.73920008350439,
+          "y": 40.495619410251976,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e1",
+          "el": "C",
+          "x": -14.739200083504386,
+          "y": 40.495619410251976,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e2",
+          "el": "C",
+          "x": 48.260799916495614,
+          "y": 40.495619410251976,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e5",
+          "el": "H",
+          "x": -140.7392000835044,
+          "y": 40.49561941025197,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e6",
+          "el": "H",
+          "x": -77.73920008350439,
+          "y": -22.504380589748024,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e7",
+          "el": "H",
+          "x": -77.73920008350439,
+          "y": 103.49561941025198,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e8",
+          "el": "H",
+          "x": -14.739200083504386,
+          "y": 103.49561941025198,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e9",
+          "el": "H",
+          "x": -14.739200083504372,
+          "y": -22.504380589748024,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e10",
+          "el": "H",
+          "x": 48.260799916495614,
+          "y": -22.504380589748024,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e11",
+          "el": "H",
+          "x": 48.26079991649563,
+          "y": 103.49561941025198,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e12",
+          "el": "H",
+          "x": 3.857637417314163e-15,
+          "y": 63.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e13",
+          "el": "H",
+          "x": -48.26079991649561,
+          "y": 40.49561941025199,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "C",
+          "x": -55.85999999999999,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "N",
+          "x": -118.85999999999999,
+          "y": 0.0,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e4",
+          "order": 1.0,
+          "state": "breaking"
+        },
+        {
+          "a": "e0",
+          "b": "e5",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e6",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e7",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e8",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e9",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e10",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e11",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e12",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e13",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 3.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "e3",
+          "order": 1.0,
+          "state": "forming"
+        }
+      ],
+      "arrows": [
+        {
+          "src": "n0",
+          "dst": "e3",
+          "kind": "electron_pair"
+        },
+        {
+          "src": "e3",
+          "dst": "e4",
+          "kind": "electron_pair"
+        }
+      ]
+    },
+    {
+      "id": "products",
+      "t": 1.0,
+      "caption": "Inversion complete: the Cl departs as an ion and the substituents have flipped through the carbon (Walden inversion).",
+      "atoms": [
+        {
+          "id": "e3",
+          "el": "C",
+          "x": 0.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "electrophile"
+        },
+        {
+          "id": "e4",
+          "el": "Cl",
+          "x": 142.79999999999998,
+          "y": 0.0,
+          "charge": 0,
+          "role": "leaving_group"
+        },
+        {
+          "id": "e0",
+          "el": "C",
+          "x": -66.55266409720423,
+          "y": 20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e1",
+          "el": "C",
+          "x": -3.5526640972042287,
+          "y": 20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e2",
+          "el": "C",
+          "x": 59.44733590279577,
+          "y": 20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e5",
+          "el": "H",
+          "x": -129.55266409720423,
+          "y": 20.85699532675236,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e6",
+          "el": "H",
+          "x": -66.55266409720423,
+          "y": -42.14300467324763,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e7",
+          "el": "H",
+          "x": -66.55266409720423,
+          "y": 83.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e8",
+          "el": "H",
+          "x": -3.5526640972042287,
+          "y": 83.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e9",
+          "el": "H",
+          "x": -3.5526640972042145,
+          "y": -42.14300467324763,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e10",
+          "el": "H",
+          "x": 59.44733590279577,
+          "y": -42.14300467324763,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e11",
+          "el": "H",
+          "x": 59.447335902795786,
+          "y": 83.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e12",
+          "el": "H",
+          "x": 63.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "e13",
+          "el": "H",
+          "x": 59.447335902795764,
+          "y": -20.85699532675237,
+          "charge": 0,
+          "role": "normal"
+        },
+        {
+          "id": "n0",
+          "el": "C",
+          "x": -63.0,
+          "y": 0.0,
+          "charge": -1,
+          "role": "nucleophile"
+        },
+        {
+          "id": "n1",
+          "el": "N",
+          "x": -126.0,
+          "y": 0.0,
+          "charge": 0,
+          "role": "normal"
+        }
+      ],
+      "bonds": [
+        {
+          "a": "e0",
+          "b": "e1",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e2",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e4",
+          "order": 1.0,
+          "state": "breaking"
+        },
+        {
+          "a": "e0",
+          "b": "e5",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e6",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e0",
+          "b": "e7",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e8",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e1",
+          "b": "e9",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e10",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e2",
+          "b": "e11",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e12",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "e3",
+          "b": "e13",
+          "order": 1.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "n1",
+          "order": 3.0,
+          "state": "normal"
+        },
+        {
+          "a": "n0",
+          "b": "e3",
+          "order": 1.0,
+          "state": "normal"
+        }
+      ],
+      "arrows": []
+    }
+  ]
+}
