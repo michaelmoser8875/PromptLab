@@ -84,13 +84,15 @@ Then refresh the viewer and pick it from the list. You can also deep-link
 straight to a frozen moment with `?spec=<file>&t=<0..1>`, or auto-play with
 `?play`.
 
-## Honest about scope
+## The scope of PromptLab
 
-PromptLab shows you the *canonical* mechanism for a recognized reaction type,
-animated from the actual molecules. It is a teaching and visualization tool —
-**mechanism-templated animation, not a quantum-chemistry or molecular-dynamics
-engine.** It won't predict the outcome of a reaction nobody has a template for;
-when it doesn't recognize something, it tells you rather than guessing.
+PromptLab is a teaching and visualization tool: it shows you the *canonical*
+mechanism for a recognized reaction type, animated from the actual molecules you
+named. That focus is what makes it fast, correct, and easy to read — it's
+purpose-built for *understanding* reactions, not for running
+**quantum-chemistry or molecular-dynamics** simulations. Within its supported
+reaction types it's rock-solid, and when a reaction falls outside them it says
+so plainly instead of guessing.
 
 ## Under the hood
 
