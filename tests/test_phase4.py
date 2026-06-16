@@ -117,7 +117,8 @@ def main() -> int:
     check(sn2_signature(sn2) == sn2_signature(sn2_b),
           "sn2: swapped reactants produced a different mechanism signature")
 
-    # 4. Generic engine cross-fades (reactant ids vs product ids differ).
+    # 4. Generic engine produces a tracked morph, not a cross-fade: reactant and
+    #    product frames share atom ids (atoms slide) and bonds break and form.
     comb = build_animation(
         eq([("methane", "C"), ("oxygen", "O=O")],
            [("carbon dioxide", "O=C=O"), ("water", "O")]),
@@ -126,8 +127,12 @@ def main() -> int:
     f = comb.to_dict()["frames"]
     react_ids = {a["id"] for a in f[0]["atoms"]}
     prod_ids = {a["id"] for a in f[-1]["atoms"]}
-    check(react_ids.isdisjoint(prod_ids),
-          "combustion: expected cross-fade (disjoint reactant/product ids)")
+    shared = react_ids & prod_ids
+    check(len(shared) >= min(len(react_ids), len(prod_ids)) // 2,
+          "combustion: expected shared (tracked) atom ids across frames")
+    states = bond_states_in(comb)
+    check("breaking" in states and "forming" in states,
+          "combustion: expected bonds to break and form during the morph")
 
     total = len(EXAMPLES) + 3
     if _failures:
@@ -136,7 +141,7 @@ def main() -> int:
             print(f"  - {m}")
         return 1
     print(f"PASS — {total} spec groups validated "
-          f"({len(EXAMPLES)} curated examples + SN2 mechanism + swap + cross-fade)")
+          f"({len(EXAMPLES)} curated examples + SN2 mechanism + swap + tracked morph)")
     return 0
 
 

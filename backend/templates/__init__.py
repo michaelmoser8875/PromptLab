@@ -45,55 +45,52 @@ def _smarts_matches(smiles: str, smarts: str) -> list[tuple[int, ...]]:
     return list(mol.GetSubstructMatches(pat))
 
 
-def _ester_roles(species: list[Species], which: str) -> dict:
+def _ester_roles(smiles: str, which: str) -> dict:
     roles: dict = {}
     if which == "reactants":
-        for i, s in enumerate(species):
-            for m in _smarts_matches(s.smiles, "[CX3](=[OX1])[OX2H1]"):
-                roles[(i, str(m[0]))] = ROLE_ELECTROPHILE   # carbonyl carbon
-                roles[(i, str(m[2]))] = ROLE_LEAVING_GROUP   # hydroxyl O (-> water)
-            for m in _smarts_matches(s.smiles, "[#6;X4][OX2H1]"):
-                roles[(i, str(m[1]))] = ROLE_NUCLEOPHILE     # alcohol oxygen
+        for m in _smarts_matches(smiles, "[CX3](=[OX1])[OX2H1]"):
+            roles[str(m[0])] = ROLE_ELECTROPHILE   # carbonyl carbon
+            roles[str(m[2])] = ROLE_LEAVING_GROUP   # hydroxyl O (-> water)
+        for m in _smarts_matches(smiles, "[#6;X4][OX2H1]"):
+            roles[str(m[1])] = ROLE_NUCLEOPHILE     # alcohol oxygen
     else:  # products
-        for i, s in enumerate(species):
-            for m in _smarts_matches(s.smiles, "[CX3](=[OX1])[OX2][#6]"):
-                roles[(i, str(m[0]))] = ROLE_ELECTROPHILE    # ester carbonyl
-                roles[(i, str(m[2]))] = ROLE_NUCLEOPHILE     # ester bridging O
-            for m in _smarts_matches(s.smiles, "[OX2H2]"):
-                roles[(i, str(m[0]))] = ROLE_LEAVING_GROUP   # water oxygen
+        for m in _smarts_matches(smiles, "[CX3](=[OX1])[OX2][#6]"):
+            roles[str(m[0])] = ROLE_ELECTROPHILE    # ester carbonyl
+            roles[str(m[2])] = ROLE_NUCLEOPHILE     # ester bridging O
+        for m in _smarts_matches(smiles, "[OX2H2]"):
+            roles[str(m[0])] = ROLE_LEAVING_GROUP   # water oxygen
     return roles
 
 
-def _acid_base_roles(species: list[Species], which: str) -> dict:
+def _acid_base_roles(smiles: str, which: str) -> dict:
     """Mark acidic protons and basic sites by structure (both sides)."""
     roles: dict = {}
-    for i, s in enumerate(species):
-        mol = Chem.MolFromSmiles(s.smiles)
-        if mol is None:
-            continue
-        mol = Chem.AddHs(mol)
-        for atom in mol.GetAtoms():
-            sym = atom.GetSymbol()
-            idx = str(atom.GetIdx())
-            # basic site: a lone-pair donor (anion or neutral amine N)
-            if atom.GetFormalCharge() < 0 and sym in ("O", "N", "S"):
-                roles[(i, idx)] = ROLE_BASE_SITE
-            elif sym == "N" and atom.GetTotalNumHs() >= 1 and atom.GetFormalCharge() == 0:
-                if not any(n.GetSymbol() == "C" and any(
-                    b.GetBondTypeAsDouble() == 2.0 for b in n.GetBonds()
-                ) for n in atom.GetNeighbors()):
-                    roles[(i, idx)] = ROLE_BASE_SITE
-            # acidic proton: H on a halogen, or H on an O that hangs off an oxoacid
-            elif sym == "H":
-                heavy = atom.GetNeighbors()[0] if atom.GetDegree() == 1 else None
-                if heavy is None:
-                    continue
-                if heavy.GetSymbol() in _HALOGENS:
-                    roles[(i, idx)] = ROLE_ACID_PROTON
-                elif heavy.GetSymbol() == "O":
-                    if any(n.GetSymbol() in ("C", "S", "N", "P")
-                           for n in heavy.GetNeighbors()):
-                        roles[(i, idx)] = ROLE_ACID_PROTON
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return roles
+    mol = Chem.AddHs(mol)
+    for atom in mol.GetAtoms():
+        sym = atom.GetSymbol()
+        idx = str(atom.GetIdx())
+        # basic site: a lone-pair donor (anion or neutral amine N)
+        if atom.GetFormalCharge() < 0 and sym in ("O", "N", "S"):
+            roles[idx] = ROLE_BASE_SITE
+        elif sym == "N" and atom.GetTotalNumHs() >= 1 and atom.GetFormalCharge() == 0:
+            if not any(n.GetSymbol() == "C" and any(
+                b.GetBondTypeAsDouble() == 2.0 for b in n.GetBonds()
+            ) for n in atom.GetNeighbors()):
+                roles[idx] = ROLE_BASE_SITE
+        # acidic proton: H on a halogen, or H on an O that hangs off an oxoacid
+        elif sym == "H":
+            heavy = atom.GetNeighbors()[0] if atom.GetDegree() == 1 else None
+            if heavy is None:
+                continue
+            if heavy.GetSymbol() in _HALOGENS:
+                roles[idx] = ROLE_ACID_PROTON
+            elif heavy.GetSymbol() == "O":
+                if any(n.GetSymbol() in ("C", "S", "N", "P")
+                       for n in heavy.GetNeighbors()):
+                    roles[idx] = ROLE_ACID_PROTON
     return roles
 
 
