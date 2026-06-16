@@ -12,37 +12,52 @@
       font-family: system-ui, -apple-system, Segoe UI, sans-serif;
       display: flex; flex-direction: column; min-height: 100vh;
     }
-    header { padding: 18px 24px 8px; }
+    header { padding: 18px 24px 6px; }
     h1 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: .2px; }
     .sub { color: #8b94a3; font-size: 13px; margin-top: 2px; }
     .bar {
-      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
       padding: 12px 24px; border-bottom: 1px solid #1c2230;
     }
+    .bar .spacer { flex: 1; }
     select, button {
       background: #161c28; color: #e7ecf3; border: 1px solid #2a3344;
       border-radius: 8px; padding: 8px 12px; font-size: 14px; cursor: pointer;
     }
     button:hover, select:hover { border-color: #3c4a63; }
     button.primary { background: #2f6dff; border-color: #2f6dff; font-weight: 600; }
+    button.icon { padding: 8px 11px; }
+    label.toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #aeb8c8; }
     .stage { flex: 1; display: flex; flex-direction: column; padding: 8px 24px 0; }
     #equation {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 15px; color: #aeb8c8; margin: 4px 0 8px;
     }
     .canvas-wrap {
-      flex: 1; min-height: 360px; background:
-        radial-gradient(1200px 500px at 50% -10%, #141b2b 0%, #0c0f16 70%);
+      position: relative; flex: 1; min-height: 320px;
+      background: radial-gradient(1200px 500px at 50% -10%, #141b2b 0%, #0c0f16 70%);
       border: 1px solid #1c2230; border-radius: 14px; overflow: hidden;
+      touch-action: none;
     }
-    svg { width: 100%; height: 100%; display: block; }
-    .scrub { display: flex; align-items: center; gap: 12px; padding: 12px 24px; }
-    input[type=range] { flex: 1; accent-color: #2f6dff; }
+    svg#canvas { width: 100%; height: 100%; display: block; }
+    .cam {
+      position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 6px;
+    }
+    .cam button { width: 34px; height: 34px; padding: 0; font-size: 16px; line-height: 1;
+      background: rgba(22,28,40,.85); }
+    .hint { position: absolute; left: 12px; bottom: 10px; font-size: 11px; color: #66708020; color: #5c6678; }
+    .tooltip {
+      position: absolute; display: none; pointer-events: none; z-index: 5;
+      background: #11161f; border: 1px solid #2a3344; border-radius: 7px;
+      padding: 5px 9px; font-size: 13px; color: #e7ecf3; white-space: nowrap;
+      box-shadow: 0 6px 18px rgba(0,0,0,.4);
+    }
+    .ediag-wrap { padding: 6px 24px 0; }
+    svg#ediag { width: 100%; height: 150px; display: block; }
     #caption {
-      min-height: 44px; padding: 10px 24px 22px; color: #cdd6e4; font-size: 15px;
-      max-width: 920px;
+      min-height: 40px; padding: 6px 24px 18px; color: #cdd6e4; font-size: 15px; max-width: 940px;
     }
-    .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #97a1b2; padding: 0 24px 8px; }
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #97a1b2; padding: 0 24px 14px; }
     .chip { display: inline-flex; align-items: center; gap: 6px; }
     .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
     .err { color: #ff7a7a; padding: 12px 24px; }
@@ -51,14 +66,18 @@
 <body>
   <header>
     <h1>PromptLab — 2D Mechanism Animations</h1>
-    <div class="sub">Mechanism-templated animation from a balanced equation. Pick a reaction, then play.</div>
+    <div class="sub">Mechanism-templated animation from a balanced equation. Play it, scrub the reaction coordinate, hover any atom.</div>
   </header>
 
   <div class="bar">
-    <label for="spec">Reaction:</label>
+    <label for="spec">Reaction</label>
     <select id="spec"></select>
+    <button id="prev" class="icon" title="Previous phase (←)">⏮</button>
     <button id="play" class="primary">▶ Play</button>
-    <button id="restart">⟲ Restart</button>
+    <button id="next" class="icon" title="Next phase (→)">⏭</button>
+    <button id="restart" class="icon" title="Restart">⟲</button>
+    <div class="spacer"></div>
+    <label class="toggle"><input type="checkbox" id="loop" /> Loop</label>
     <label for="speed">Speed</label>
     <select id="speed">
       <option value="0.5">0.5×</option>
@@ -70,12 +89,21 @@
 
   <div class="stage">
     <div id="equation"></div>
-    <div class="canvas-wrap"><svg id="canvas" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <div class="canvas-wrap" id="canvasWrap">
+      <svg id="canvas" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="cam">
+        <button id="zoomIn" title="Zoom in">+</button>
+        <button id="zoomOut" title="Zoom out">−</button>
+        <button id="zoomReset" title="Reset view">⤢</button>
+      </div>
+      <div class="hint">scroll to zoom · drag to pan · hover an atom</div>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
   </div>
 
-  <div class="scrub">
-    <input id="scrub" type="range" min="0" max="1000" value="0" />
-  </div>
+  <div class="ediag-wrap"><svg id="ediag"></svg></div>
+
+  <div id="caption"></div>
   <div class="legend">
     <span class="chip"><span class="dot" style="background:#2fd0ff"></span>nucleophile / base</span>
     <span class="chip"><span class="dot" style="background:#ff9f43"></span>electrophile</span>
@@ -84,56 +112,62 @@
     <span class="chip"><span class="dot" style="background:#3ce06a"></span>bond forming</span>
     <span class="chip"><span class="dot" style="background:#ff6363"></span>bond breaking</span>
   </div>
-  <div id="caption"></div>
   <div id="error" class="err"></div>
 
   <script type="module">
     import { MechanismPlayer } from "./src/animations/2d/player.js";
+    import { EnergyDiagram } from "./src/animations/2d/energy_diagram.js";
 
-    const svg = document.getElementById("canvas");
-    const player = new MechanismPlayer(
-      svg,
-      document.getElementById("caption"),
-      document.getElementById("equation"),
-    );
-
-    const specSel = document.getElementById("spec");
-    const scrub = document.getElementById("scrub");
     const playBtn = document.getElementById("play");
+    const specSel = document.getElementById("spec");
     const errEl = document.getElementById("error");
 
-    player.onProgress = (p) => { scrub.value = String(Math.round(p * 1000)); };
-    player.onEnd = () => { playBtn.textContent = "⟲ Replay"; };
+    const player = new MechanismPlayer(document.getElementById("canvas"), {
+      caption: document.getElementById("caption"),
+      equation: document.getElementById("equation"),
+      tooltip: document.getElementById("tooltip"),
+    });
+    const diagram = new EnergyDiagram(document.getElementById("ediag"), {
+      onSeek: (p) => { player.seek(p); setPlayLabel(); },
+    });
+
+    const setPlayLabel = () => { playBtn.textContent = player.playing ? "❚❚ Pause" : "▶ Play"; };
+
+    player.onLoad = (frames) => diagram.setFrames(frames);
+    player.onProgress = (p) => diagram.setProgress(p);
+    player.onEnd = () => setPlayLabel();
 
     async function loadSpec(file) {
       errEl.textContent = "";
       try {
         const spec = await (await fetch(`./specs/${file}`)).json();
         player.load(spec);
-        scrub.value = "0";
-        playBtn.textContent = "▶ Play";
+        setPlayLabel();
       } catch (e) {
         errEl.textContent =
-          "Could not load spec. Serve this folder over HTTP (e.g. `python -m http.server` in frontend/) rather than opening the file directly. " + e;
+          "Could not load spec. Serve this folder over HTTP (`cd frontend && python -m http.server`) rather than opening the file directly. " + e;
       }
     }
 
-    playBtn.addEventListener("click", () => {
-      player.toggle();
-      playBtn.textContent = player.playing ? "❚❚ Pause" : "▶ Play";
-    });
-    document.getElementById("restart").addEventListener("click", () => {
-      player.restart();
-      playBtn.textContent = "❚❚ Pause";
-    });
-    document.getElementById("speed").addEventListener("change", (e) => {
-      player.setSpeed(parseFloat(e.target.value));
-    });
-    scrub.addEventListener("input", (e) => {
-      player.seek(parseInt(e.target.value, 10) / 1000);
-      playBtn.textContent = "▶ Play";
-    });
+    playBtn.addEventListener("click", () => { player.toggle(); setPlayLabel(); });
+    document.getElementById("restart").addEventListener("click", () => { player.restart(); setPlayLabel(); });
+    document.getElementById("prev").addEventListener("click", () => { player.stepPhase(-1); setPlayLabel(); });
+    document.getElementById("next").addEventListener("click", () => { player.stepPhase(1); setPlayLabel(); });
+    document.getElementById("loop").addEventListener("change", (e) => player.setLoop(e.target.checked));
+    document.getElementById("speed").addEventListener("change", (e) => player.setSpeed(parseFloat(e.target.value)));
+    document.getElementById("zoomIn").addEventListener("click", () => player.zoomBy(1.2));
+    document.getElementById("zoomOut").addEventListener("click", () => player.zoomBy(1 / 1.2));
+    document.getElementById("zoomReset").addEventListener("click", () => player.resetView());
     specSel.addEventListener("change", () => loadSpec(specSel.value));
+
+    window.addEventListener("keydown", (e) => {
+      if (e.target.tagName === "SELECT") return;
+      if (e.code === "Space") { e.preventDefault(); player.toggle(); setPlayLabel(); }
+      else if (e.code === "ArrowRight") { player.stepPhase(1); setPlayLabel(); }
+      else if (e.code === "ArrowLeft") { player.stepPhase(-1); setPlayLabel(); }
+      else if (e.key === "+" || e.key === "=") player.zoomBy(1.2);
+      else if (e.key === "-") player.zoomBy(1 / 1.2);
+    });
 
     (async function init() {
       try {
@@ -141,26 +175,17 @@
         const index = await (await fetch("./specs/index.json")).json();
         for (const s of index.specs) {
           const opt = document.createElement("option");
-          opt.value = s.file;
-          opt.textContent = `${s.type} — ${s.label}`;
+          opt.value = s.file; opt.textContent = `${s.type} — ${s.label}`;
           specSel.appendChild(opt);
         }
         const wanted = params.get("spec");
-        const initial =
-          (wanted && index.specs.find((s) => s.file === wanted)?.file) ||
-          index.specs[0]?.file;
+        const initial = (wanted && index.specs.find((s) => s.file === wanted)?.file) || index.specs[0]?.file;
         if (initial) {
           specSel.value = initial;
           await loadSpec(initial);
-          // Deep-link to a frozen frame (?t=0..1) or auto-play (?play).
           const t = parseFloat(params.get("t"));
-          if (!Number.isNaN(t)) {
-            player.seek(t);
-            scrub.value = String(Math.round(t * 1000));
-          } else if (params.has("play")) {
-            player.play();
-            playBtn.textContent = "❚❚ Pause";
-          }
+          if (!Number.isNaN(t)) player.seek(t);
+          else if (params.has("play")) { player.play(); setPlayLabel(); }
         }
       } catch (e) {
         errEl.textContent =

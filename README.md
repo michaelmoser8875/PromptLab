@@ -60,8 +60,14 @@ cd frontend && python -m http.server 8000
 #   → open http://localhost:8000/
 ```
 
-The viewer gives you a reaction picker, play / pause / scrub, and a speed
-control. Everything is color-coded so the mechanism reads at a glance:
+The viewer is built to explore, not just watch. You can play / pause, step
+between phases, change speed, hover any atom to identify it, and zoom and pan the
+scene. The timeline is a **reaction-coordinate energy diagram** — drag the marker
+and it rides the curve from reactants, up to the transition state, down to
+products. Because every frame is a point on the fixed mechanism path, you can
+scrub anywhere without ever landing on an unphysical, off-pathway state.
+
+Everything is color-coded so the mechanism reads at a glance:
 
 | Color | Meaning |
 |-------|---------|
