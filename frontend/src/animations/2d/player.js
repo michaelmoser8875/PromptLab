@@ -8,6 +8,13 @@
 // That one rule renders the atom-tracked SN2 inversion and the atom-mapped
 // morph mechanisms alike.
 //
+// Electron behaviour is the point of the visualization, so it is drawn
+// explicitly rather than implied by lines: lone pairs (counted from formal
+// charge) sit on each atom, curly arrows carry flowing electron-pair dots from
+// source to destination, and forming/breaking bonds show electrons streaming
+// in or out. None of this is in the spec — it is derived deterministically
+// from the atoms and bonds, so every reaction gets it for free.
+//
 // Interactivity is deliberately limited to the *camera, playback, and
 // inspection* — scrub, step between phases, zoom/pan, hover for atom info.
 // Every visible state is a deterministic interpolation along the fixed
@@ -29,6 +36,11 @@ const ELEMENT_NAMES = {
   Cl: "Chlorine", Br: "Bromine", I: "Iodine", S: "Sulfur", P: "Phosphorus",
   Na: "Sodium", K: "Potassium", Ag: "Silver", Mg: "Magnesium", Ca: "Calcium",
 };
+// Group (valence) electron counts, for lone-pair bookkeeping.
+const GROUP_VE = {
+  H: 1, B: 3, C: 4, N: 5, O: 6, F: 7, Si: 4, P: 5, S: 6, Cl: 7,
+  Br: 7, I: 7, Na: 1, K: 1, Mg: 2, Ca: 2, Ag: 1, Zn: 2,
+};
 const ROLE_COLORS = {
   nucleophile: "#2fd0ff", electrophile: "#ff9f43", leaving_group: "#ff5e5e",
   acid_proton: "#ffd633", base_site: "#2fd0ff",
@@ -38,12 +50,49 @@ const ROLE_LABELS = {
   leaving_group: "leaving group", acid_proton: "acidic proton",
   base_site: "basic site",
 };
+// One visual language for "electron": this cyan is used for lone pairs and for
+// every flowing electron dot, so the eye tracks charge as it moves.
+const ELECTRON_COLOR = "#8fe8ff";
 
 const colorFor = (el) => ELEMENT_COLORS[el] || "#ff80c0";
 const radiusFor = (el) => ELEMENT_RADII[el] || 14;
 const lerp = (a, b, u) => a + (b - a) * u;
 const smoothstep = (u) => u * u * (3 - 2 * u);
 const bondKey = (a, b) => (a < b ? `${a}|${b}` : `${b}|${a}`);
+
+// Nonbonding electron pairs on an atom, from formal charge: FC = V - B - N,
+// so N (nonbonding electrons) = V - B - FC. Returns whole lone pairs.
+function lonePairCount(el, charge, orderSum) {
+  const v = GROUP_VE[el];
+  if (v === undefined) return 0;
+  const nonbonding = v - orderSum - (charge || 0);
+  if (nonbonding < 1) return 0;
+  return Math.min(4, Math.floor(nonbonding / 2));
+}
+
+// Place `count` lone pairs in the widest angular gaps left by the bonded
+// neighbours, so they sit where real lone pairs would — pointing away from
+// bonds (e.g. a nucleophile's pair aims straight at the carbon it attacks).
+function lonePairAngles(atom, neighbors, count) {
+  const occupied = neighbors.map((n) => Math.atan2(n.y - atom.y, n.x - atom.x));
+  const out = [];
+  for (let k = 0; k < count; k++) {
+    let bestAngle = (k / Math.max(count, 1)) * 2 * Math.PI;
+    if (occupied.length) {
+      const sorted = [...occupied].sort((a, b) => a - b);
+      let bestGap = -1;
+      for (let i = 0; i < sorted.length; i++) {
+        const a = sorted[i];
+        const b = i === sorted.length - 1 ? sorted[0] + 2 * Math.PI : sorted[i + 1];
+        const gap = b - a;
+        if (gap > bestGap) { bestGap = gap; bestAngle = a + gap / 2; }
+      }
+    }
+    out.push(bestAngle);
+    occupied.push(bestAngle);
+  }
+  return out;
+}
 
 function el(tag, attrs = {}) {
   const node = document.createElementNS(SVG_NS, tag);
@@ -102,7 +151,7 @@ export class MechanismPlayer {
         maxx = Math.max(maxx, a.x + r); maxy = Math.max(maxy, a.y + r);
       }
     }
-    const pad = 40;
+    const pad = 48;
     this._base = [minx - pad, miny - pad, maxx - minx + 2 * pad, maxy - miny + 2 * pad];
     this._applyView();
   }
@@ -169,14 +218,26 @@ export class MechanismPlayer {
     const usedEls = new Set([...atoms.values()].map((a) => a.el));
     this.svg.appendChild(this._defs(usedEls));
 
+    // Per-atom bonding tally (for lone-pair counts) and neighbour list (for
+    // lone-pair placement). Only count bonds that are substantially present.
+    const adj = new Map();
+    for (const id of atoms.keys()) adj.set(id, { orderSum: 0, neighbors: [] });
+    for (const bd of bonds) {
+      if (bd.opacity < 0.35) continue;
+      const o = Math.max(1, Math.round(bd.order));
+      const ea = adj.get(bd.a), eb = adj.get(bd.b);
+      if (ea && atoms.get(bd.b)) { ea.orderSum += o; ea.neighbors.push(atoms.get(bd.b)); }
+      if (eb && atoms.get(bd.a)) { eb.orderSum += o; eb.neighbors.push(atoms.get(bd.a)); }
+    }
+
     const root = el("g");
     this.svg.appendChild(root);
-    const gBonds = el("g"), gArrows = el("g"), gAtoms = el("g");
-    root.append(gBonds, gArrows, gAtoms);
+    const gBonds = el("g"), gArrows = el("g"), gAtoms = el("g"), gElectrons = el("g");
+    root.append(gBonds, gArrows, gAtoms, gElectrons);
 
-    for (const bd of bonds) this._drawBond(gBonds, bd, atoms);
-    for (const ar of arrows) this._drawArrow(gArrows, ar, atoms);
-    for (const [id, a] of atoms) this._drawAtom(gAtoms, id, a);
+    for (const bd of bonds) this._drawBond(gBonds, bd, atoms, gElectrons);
+    for (const ar of arrows) this._drawArrow(gArrows, ar, atoms, gElectrons);
+    for (const [id, a] of atoms) this._drawAtom(gAtoms, id, a, adj.get(id), gElectrons);
 
     let active = this.frames[0], idx = 0;
     this.frames.forEach((f, i) => { if (this.progress >= f.t - 1e-9) { active = f; idx = i; } });
@@ -202,19 +263,37 @@ export class MechanismPlayer {
     glow.appendChild(merge);
     defs.appendChild(glow);
 
+    // Softer, hotter glow specifically for electron dots.
+    const eglow = el("filter", { id: "eglow", x: "-150%", y: "-150%", width: "400%", height: "400%" });
+    eglow.appendChild(el("feGaussianBlur", { stdDeviation: "2.4", result: "b" }));
+    const emerge = el("feMerge");
+    emerge.appendChild(el("feMergeNode", { in: "b" }));
+    emerge.appendChild(el("feMergeNode", { in: "SourceGraphic" }));
+    eglow.appendChild(emerge);
+    defs.appendChild(eglow);
+
     const marker = el("marker", { id: "arrowhead", markerWidth: 9, markerHeight: 9, refX: 6, refY: 3, orient: "auto", markerUnits: "strokeWidth" });
     marker.appendChild(el("path", { d: "M0,0 L6,3 L0,6 Z", fill: "#ffd24d" }));
     defs.appendChild(marker);
     return defs;
   }
 
-  _drawBond(g, bd, atoms) {
+  // A small glowing electron dot at (x, y).
+  _electron(g, x, y, opacity = 1, r = 2.6) {
+    g.appendChild(el("circle", {
+      cx: x, cy: y, r, fill: ELECTRON_COLOR, opacity,
+      filter: "url(#eglow)",
+    }));
+  }
+
+  _drawBond(g, bd, atoms, gElectrons) {
     const A = atoms.get(bd.a), B = atoms.get(bd.b);
     if (!A || !B) return;
     const op = bd.opacity * Math.min(A.opacity, B.opacity);
     const dx = B.x - A.x, dy = B.y - A.y;
     const len = Math.hypot(dx, dy) || 1;
     const px = -dy / len, py = dx / len;
+    const ux = dx / len, uy = dy / len;
     const order = Math.round(bd.order);
 
     let stroke = "#b9c0c9", dash = "none", width = 5.5, dashoff = 0;
@@ -229,9 +308,23 @@ export class MechanismPlayer {
         "stroke-dasharray": dash, "stroke-dashoffset": dashoff, opacity: op,
       }));
     }
+
+    // Electrons streaming along a changing bond: into the bond as it forms,
+    // out toward the leaving atom as it breaks. Margin keeps dots off the
+    // atom spheres.
+    if (bd.state === "forming" || bd.state === "breaking") {
+      const m = 0.22;
+      const flow = (this._clock * 0.55) % 1; // 0..1 loop
+      const s = bd.state === "forming" ? 1 - flow : flow; // forming: B->A (inward), breaking: A->B (outward)
+      const t = m + s * (1 - 2 * m);
+      const x = A.x + ux * len * t, y = A.y + uy * len * t;
+      this._electron(gElectrons, x, y, op * 0.95);
+      const t2 = m + ((s + 0.5) % 1) * (1 - 2 * m);
+      this._electron(gElectrons, A.x + ux * len * t2, A.y + uy * len * t2, op * 0.5, 2.1);
+    }
   }
 
-  _drawAtom(g, id, a) {
+  _drawAtom(g, id, a, bonding, gElectrons) {
     if (a.opacity <= 0.01) return;
     const r = radiusFor(a.el);
     const grp = el("g", { opacity: a.opacity, cursor: "pointer" });
@@ -274,9 +367,28 @@ export class MechanismPlayer {
       grp.addEventListener("pointerleave", () => this._hideTip());
     }
     g.appendChild(grp);
+
+    // Lone pairs — the electrons sitting on the atom. Drawn into the shared
+    // electron layer (above bonds) so the cyan reads as one substance whether
+    // it is resting on an atom or flowing along an arrow.
+    const pairs = lonePairCount(a.el, a.charge, bonding ? bonding.orderSum : 0);
+    if (pairs > 0 && a.opacity > 0.2) {
+      const angles = lonePairAngles(a, bonding ? bonding.neighbors : [], pairs);
+      const dist = r + 8;
+      // Anions/nucleophiles breathe slightly to draw the eye to the reactive pair.
+      const live = a.charge < 0 || a.role === "nucleophile" || a.role === "base_site";
+      const breath = live ? 0.85 + 0.15 * Math.sin(this._clock * 3.0) : 0.8;
+      for (const ang of angles) {
+        const bx = a.x + Math.cos(ang) * dist, by = a.y + Math.sin(ang) * dist;
+        const ppx = -Math.sin(ang), ppy = Math.cos(ang);
+        for (const o of [-3.1, 3.1]) {
+          this._electron(gElectrons, bx + ppx * o, by + ppy * o, a.opacity * breath, 2.3);
+        }
+      }
+    }
   }
 
-  _drawArrow(g, ar, atoms) {
+  _drawArrow(g, ar, atoms, gElectrons) {
     const A = atoms.get(ar.src), B = atoms.get(ar.dst);
     if (!A || !B || ar.opacity <= 0.02) return;
     const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
@@ -289,6 +401,20 @@ export class MechanismPlayer {
       stroke: "#ffd24d", "stroke-width": 3, opacity: ar.opacity,
       "stroke-linecap": "round", "marker-end": "url(#arrowhead)", filter: "url(#glow)",
     }));
+
+    // An electron pair flowing along the arrow, tail -> head, so the curly
+    // arrow shows electrons actually moving rather than just a path.
+    const bez = (s) => ({
+      x: (1 - s) * (1 - s) * A.x + 2 * (1 - s) * s * cx + s * s * B.x,
+      y: (1 - s) * (1 - s) * A.y + 2 * (1 - s) * s * cy + s * s * B.y,
+    });
+    const head = (this._clock * 0.6) % 1;
+    for (const lag of [0, 0.07]) {
+      const s = head - lag;
+      if (s < 0 || s > 1) continue;
+      const p = bez(s);
+      this._electron(gElectrons, p.x, p.y, ar.opacity, 2.5);
+    }
   }
 
   // ---- atom inspection (read-only) ----
